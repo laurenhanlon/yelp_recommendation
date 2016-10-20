@@ -15,8 +15,8 @@ def map_and_filter(s, map_fn, filter_fn):
     >>> map_and_filter([1, 2, 3, 4, 5], square, is_odd)
     [1, 9, 25]
     """
-    "*** YOUR CODE HERE ***"
-    return [ map_fn(s) for s in s if filter_fn(s)]
+    
+    return [map_fn(s) for s in s if filter_fn(s)]
 
 def key_of_min_value(d):
     """Returns the key in dict D that corresponds to the minimum value of D.
@@ -27,7 +27,7 @@ def key_of_min_value(d):
     >>> key_of_min_value(letters)
     'c'
     """
-    "*** YOUR CODE HERE ***"
+    
     return min(d, key=d.get)
 
 def zip(*sequences):
@@ -47,6 +47,7 @@ def zip(*sequences):
     ['b', 2, 're']
     ['c', 3, 'mi']
     """
+    
     return list(map(list, _zip(*sequences)))
 
 def enumerate(s, start=0):
@@ -59,7 +60,7 @@ def enumerate(s, start=0):
     >>> enumerate('five', 5)
     [[5, 'f'], [6, 'i'], [7, 'v'], [8, 'e']]
     """
-    "*** YOUR CODE HERE ***"
+    
     return zip(range(start, start+len(s)), s)
 
 def distance(pos1, pos2):
@@ -78,5 +79,6 @@ def mean(lst):
     >>> mean([0, -3, 2, -1])
     -0.5
     """
+    
     assert len(lst) > 0, 'cannot find mean of empty sequence'
     return sum(lst) / len(lst)
