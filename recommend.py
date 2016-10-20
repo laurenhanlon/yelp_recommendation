@@ -13,7 +13,7 @@ def find_closest(location, centroids):
     >>> find_closest([3, 4], [[0, 0], [2, 3], [4, 3], [5, 5]])
     [2, 3]
     """
-    "*** YOUR CODE HERE ***"
+
     min_centroid=centroids[0]
     min_distance = float("inf")
     for point in centroids:
@@ -34,8 +34,7 @@ def group_by_first(pairs):
     >>> group_by_first(example)
     [[2, 3, 2], [2, 1], [4]]
     """
-    # Optional: This implementation is slow because it traverses the list of
-    #           pairs one time for each key. Can you improve it?
+
     keys = []
     for key, _ in pairs:
         if key not in keys:
@@ -48,7 +47,7 @@ def group_by_centroid(restaurants, centroids):
     the result, along with the other restaurants nearest to the same centroid.
     No empty lists should appear in the result.
     """
-    "*** YOUR CODE HERE ***"
+
     list = []
     for restaurant in restaurants:
         closest_centroid = find_closest(restaurant_location(restaurant), centroids)
@@ -57,7 +56,7 @@ def group_by_centroid(restaurants, centroids):
 
 def find_centroid(restaurants):
     """Return the centroid of the locations of RESTAURANTS."""
-    "*** YOUR CODE HERE ***"
+    
     lat= []
     lon= []
     for restaurant in restaurants:
@@ -77,7 +76,7 @@ def k_means(restaurants, k, max_updates=100):
 
     while old_centroids != centroids and n < max_updates:
         old_centroids = centroids
-        "*** YOUR CODE HERE ***"
+        
         lst = group_by_centroid(restaurants, centroids)
         centroids = []
         for r in lst:
@@ -101,7 +100,6 @@ def find_predictor(user, restaurants, feature_fn):
     xs = [feature_fn(r) for r in restaurants]
     ys = [reviews_by_user[restaurant_name(r)] for r in restaurants]
 
-    "*** YOUR CODE HERE ***"
     mean_x = mean(xs)
     mean_y = mean(ys)
 
@@ -118,7 +116,7 @@ def find_predictor(user, restaurants, feature_fn):
 
     b = S_xy/S_xx
     a= mean_y - b* mean_x
-    r_squared = pow(S_xy, 2) / (S_xx*S_yy)
+    r_squared = pow(S_xy, 2) / (S_xx*S_yy) #returns the R^2 value of the model
 
     def predictor(restaurant):
         return b * feature_fn(restaurant) + a
@@ -135,7 +133,7 @@ def best_predictor(user, restaurants, feature_fns):
     feature_fns -- A sequence of functions that each takes a restaurant
     """
     reviewed = list(user_reviewed_restaurants(user, restaurants).values())
-    "*** YOUR CODE HERE ***"
+    
     lst1= []
     previous_r_squared = 0 
     previous_predictor = None
@@ -159,7 +157,7 @@ def rate_all(user, restaurants, feature_functions):
     # Use the best predictor for the user, learned from *all* restaurants
     # (Note: the name RESTAURANTS is bound to a dictionary of all restaurants)
     predictor = best_predictor(user, RESTAURANTS, feature_functions)
-    "*** YOUR CODE HERE ***"
+    
     d={}
     a = user_reviewed_restaurants(user, restaurants)
     for restaurant in restaurants: 
@@ -179,7 +177,7 @@ def search(query, restaurants):
     query -- A string
     restaurants -- A sequence of restaurants
     """
-    "*** YOUR CODE HERE ***"
+    
     lst1=[]
     for restaurant in restaurants:
         a = restaurant_categories(restaurant)
