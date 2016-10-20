@@ -5,8 +5,16 @@ from utils import mean
 # Reviews
 
 def make_review(restaurant_name, rating):
-    """Return a review."""
-    return [restaurant_name, rating]
+    """Return a review.
+
+    Arguments:
+    restaurant_name (string)
+    rating (integer)
+    """
+    if rating > 5 or rating < 0:
+        print('Please keep rating between 0-5')
+    else:
+        return [restaurant_name, rating]
 
 def review_restaurant_name(review):
     """Return the reviewed restaurant's name (string)."""
@@ -50,14 +58,13 @@ def user_rating(user, restaurant_name):
 
 def make_restaurant(name, location, categories, price, reviews):
     """Return a restaurant, implemented as a dictionary."""
-    # You may change this starter implementation however you wish, including
-    # adding more items to the dictionary below.
-    "*** YOUR CODE HERE ***"
     return {'name': name,
             'location': location,
             'categories': categories,
             'price': price,
-             'reviews': [review_rating(review) for review in reviews]}
+            'hours': hours,
+            'parking': parking
+            'reviews': [review_rating(review) for review in reviews]}
 
 def restaurant_name(restaurant):
     return restaurant['name']
@@ -71,9 +78,14 @@ def restaurant_categories(restaurant):
 def restaurant_price(restaurant):
     return restaurant['price']
 
+def restaurant_hours(restaurant):
+    return restaurant['hours']
+
+def restaurant_parking[restaurant]:
+    return restaurant['parking']
+
 def restaurant_ratings(restaurant):
     """Return a list of ratings (numbers from 1 to 5)."""
-    "*** YOUR CODE HERE ***"
     return restaurant['reviews']
 
     
@@ -82,11 +94,9 @@ def restaurant_ratings(restaurant):
 
 def restaurant_num_ratings(restaurant):
     """Return the number of ratings for RESTAURANT."""
-    "*** YOUR CODE HERE ***"
     return len(restaurant_ratings(restaurant))
 
 def restaurant_mean_rating(restaurant):
     """Return the average rating for RESTAURANT."""
-    "*** YOUR CODE HERE ***"
     return mean(restaurant_ratings(restaurant))
 
